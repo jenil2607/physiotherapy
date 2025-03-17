@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Progress Report{% endblock %}
+
+{% block content %}
+    <h2>Progress Report</h2>
+    <ul>
+        {% for report in reports %}
+            <li>{{ report.appointment.patient.name }} - Progress: {{ report.progress_percentage }}% ({{ report.notes }})</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
