@@ -1,8 +1,9 @@
-
+from django.http import HttpResponse
+from django.template import loader
 
 # Create your views here.
 from django.shortcuts import render, redirect
-from .models import Appointment, ProgressReport
+from .models import Appointment
 from .forms import AppointmentForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
@@ -25,13 +26,14 @@ def book_appointment(request):
 
 # Appointment List View
 def appointment_list(request):
-    appointments = Appointment.objects.all().order_by('date', 'time')
-    return render(request, 'appointment_list.html', {'appointments': appointments})
+    appointments = Appointment.objects.all()
+    context = {
+        'appointments': appointments,
+        'current_page': 'appointments'  
+    }
+    template = loader.get_template('appointment_list.html')  
+    return HttpResponse(template.render(context, request))
 
-# Progress Report View
-def progress_report(request):
-    reports = ProgressReport.objects.all()
-    return render(request, 'progress_report.html', {'reports': reports})
 
 # Login View
 def user_login(request):

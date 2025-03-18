@@ -38,23 +38,23 @@ class Treatment(models.Model):
         return self.name
 
 # Appointment Model
-
 class Appointment(models.Model):
-    patient_name = models.CharField(max_length=100)
-    therapist_name = models.CharField(max_length=100)
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('confirmed', 'Confirmed'),
+        ('completed', 'Completed'),
+        ('cancelled', 'Cancelled'),
+    ]
+
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    therapist = models.ForeignKey(Therapist, on_delete=models.CASCADE)
+    treatment = models.ForeignKey(Treatment, on_delete=models.CASCADE)
     date = models.DateField()
     time = models.TimeField()
-    notes = models.TextField(blank=True, null=True)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')  # ✅ Added default value
+    
 
     def __str__(self):
-        return f"{self.patient_name} - {self.date} {self.time}"
+        return f"{self.patient.name} - {self.date} {self.time} ({self.status})"
 
-# Progress Report Model
-class ProgressReport(models.Model):
-    appointment = models.OneToOneField(Appointment, on_delete=models.CASCADE)
-    notes = models.TextField()
-    progress_percentage = models.IntegerField(help_text="Progress in percentage")
-    created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return f"Progress for {self.appointment.patient.name} - {self.progress_percentage}%"
