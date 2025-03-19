@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 # Patient Model
 class Patient(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+    # user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=100)
     age = models.IntegerField()
     contact = models.CharField(max_length=15)
@@ -18,7 +18,7 @@ class Patient(models.Model):
 
 # Therapist Model
 class Therapist(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    # user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     specialization = models.CharField(max_length=100)
     contact = models.CharField(max_length=15)

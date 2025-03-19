@@ -1,12 +1,60 @@
+
 {% extends 'base.html' %}
 
 {% block title %}Book Appointment{% endblock %}
 
 {% block content %}
     <h2>Book an Appointment</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Book</button>
-    </form>
+    
+<form method="post">
+    {% csrf_token %}
+    
+    <div>
+        <label for="id_patient">Patient:</label>
+        {{ form.patient }}
+    </div>
+
+    <div>
+        <label for="id_therapist">Therapist:</label>
+        {{ form.therapist }}
+    </div>
+
+    <div>
+        <label for="id_treatment">Treatment:</label>
+        {{ form.treatment }}
+    </div>
+
+    <div>
+        <label for="id_date">Date:</label>
+        <input type="text" id="date" name="date" class="datepicker" placeholder="Select Date">
+    </div>
+
+    <div>
+        <label for="id_time">Time:</label>
+        <input type="text" id="time" name="time" class="timepicker" placeholder="Select Time">
+    </div>
+
+    <br>
+    <button type="submit">Book</button>
+</form>
+
+
+    <!-- Include Flatpickr CSS & JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- Initialize Flatpickr -->
+    <script>
+        flatpickr(".datepicker", {
+            enableTime: false,
+            dateFormat: "Y-m-d",
+        });
+
+        flatpickr(".timepicker", {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "H:i",
+        });
+    </script>
 {% endblock %}
+
