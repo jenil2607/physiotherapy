@@ -5,26 +5,17 @@ from django.template import loader
 from django.shortcuts import render, redirect
 from .models import Appointment
 from .forms import AppointmentForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.urls import reverse_lazy
 
 # Home Page
 def home(request):
-    return render(request, 'home.html')
+    template = loader.get_template('home.html')  
+    context = {'current_page': 'home'}
+    return HttpResponse(template.render(context, request))
 
-# Appointment Booking View
-def book_appointment(request):
-    if request.method == "POST":
-        form = AppointmentForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('appointment_list')  
-    else:
-        form = AppointmentForm()
-    
-    return render(request, 'book_appointment.html', {'form': form})
 
-# Appointment List View
 def appointment_list(request):
     appointments = Appointment.objects.all()
     context = {
@@ -34,29 +25,17 @@ def appointment_list(request):
     template = loader.get_template('appointment_list.html')  
     return HttpResponse(template.render(context, request))
 
-
-# Login View
-def user_login(request):
+# Book Appointment View
+def book_appointment(request):
     if request.method == "POST":
-        form = AuthenticationForm(request, data=request.POST)
+        form = AppointmentForm(request.POST)
         if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            return redirect('home')
+            form.save()
+            return redirect('appointment_list')  
     else:
-        form = AuthenticationForm()
+        form = AppointmentForm()
     
-    return render(request, 'login.html', {'form': form})
+    template = loader.get_template('book_appointment.html')
+    context = {'form': form}
+    return HttpResponse(template.render(context, request))
 
-# Signup View
-def user_signup(request):
-    if request.method == "POST":
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('home')
-    else:
-        form = UserCreationForm()
-    
-    return render(request, 'signup.html', {'form': form})
