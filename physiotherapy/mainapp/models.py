@@ -6,9 +6,8 @@ from django.contrib.auth.models import User
 
 # Patient Model
 class Patient(models.Model):
-    # user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=100)
-    age = models.IntegerField()
+    age = models.IntegerField(default=0)
     contact = models.CharField(max_length=15)
     medical_history = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -18,7 +17,6 @@ class Patient(models.Model):
 
 # Therapist Model
 class Therapist(models.Model):
-    # user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     specialization = models.CharField(max_length=100)
     contact = models.CharField(max_length=15)
@@ -51,8 +49,7 @@ class Appointment(models.Model):
     treatment = models.ForeignKey(Treatment, on_delete=models.CASCADE)
     date = models.DateField()
     time = models.TimeField()
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')  # ✅ Added default value
-    
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
 
     def __str__(self):
         return f"{self.patient.name} - {self.date} {self.time} ({self.status})"

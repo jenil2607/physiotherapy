@@ -29,13 +29,15 @@ def appointment_list(request):
 def book_appointment(request):
     if request.method == "POST":
         form = AppointmentForm(request.POST)
+        print(form)
         if form.is_valid():
             form.save()
-            return redirect('appointment_list')  
+            return HttpResponse("Appointment booked successfully.")  
     else:
         form = AppointmentForm()
     
     template = loader.get_template('book_appointment.html')
     context = {'form': form}
     return HttpResponse(template.render(context, request))
+
 

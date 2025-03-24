@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: rgb(181, 231, 200);
+    background-color: rgb(152, 234, 210);
     margin-top: 0 auto;
 
 
@@ -21,11 +21,11 @@ body {
                 height: 100%;
 
                 a.navbar-brand {
-                    color: rgb(234, 239, 199);
+                    color: rgb(0, 0, 0);
 
                     img {
                         height: 100%;
-                        background-color: rgb(112, 203, 84);
+                        background-color: rgb(43, 154, 171);
                         border-radius: 50%;
                     }
 
@@ -60,15 +60,42 @@ body {
 }
 
 main {
-    padding-top: 100px;
+    padding-top: 10px;
+    text-align: center;
+    margin-top: 30px;
 }
+
+.slide_bar {
+    #carouselExampleControls {
+        width: 1000px;
+        height: 400px;
+        margin: auto;
+        /* Center the carousel */
+    }
+
+    #carouselExampleControls .carousel-inner {
+        width: 100%;
+        height: 100%;
+    }
+
+    #carouselExampleControls .carousel-item img {
+        width: 1000px;
+        /* Ensure image fills the width */
+        height: 400px;
+        /* Ensure image fills the height */
+        object-fit: fill;
+        /* Crop image to fit */
+        border-radius: 10px;
+        /* Optional: Add rounded corners */
+    }
+}
+
 
 footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: rgb(14, 48, 30);
-    color: white;
+    background-color: rgb(31, 112, 105);
+    color: rgb(0, 0, 0);
     text-align: center;
 }
-
