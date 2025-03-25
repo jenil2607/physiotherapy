@@ -14,25 +14,16 @@ def home(request):
     template = loader.get_template('home.html')  
     context = {'current_page': 'home'}
     return HttpResponse(template.render(context, request))
-
-
-def appointment_list(request):
-    appointments = Appointment.objects.all()
-    context = {
-        'appointments': appointments,
-        'current_page': 'appointments'  
-    }
-    template = loader.get_template('appointment_list.html')  
-    return HttpResponse(template.render(context, request))
-
-# Book Appointment View
+    
 def book_appointment(request):
     if request.method == "POST":
         form = AppointmentForm(request.POST)
-        print(form)
         if form.is_valid():
-            form.save()
-            return HttpResponse("Appointment booked successfully.")  
+            appointment = form.save()
+            print(f"Appointment saved: ID={appointment.id}, Patient={appointment.patient.name}, Date={appointment.date}, Time={appointment.time}")
+            return redirect('appointment_list')  # Redirect to list view
+        else:
+            print("Form errors:", form.errors)  # Print validation errors
     else:
         form = AppointmentForm()
     
@@ -40,4 +31,12 @@ def book_appointment(request):
     context = {'form': form}
     return HttpResponse(template.render(context, request))
 
-
+def appointment_list(request):
+    appointments = Appointment.objects.all()
+    print(f"Retrieved {appointments.count()} appointments:", [str(apt) for apt in appointments])  # Debug output
+    context = {
+        'appointments': appointments,
+        'current_page': 'appointments'
+    }
+    template = loader.get_template('appointment_list.html')
+    return HttpResponse(template.render(context, request))

@@ -4,11 +4,13 @@
 
 {% block content %}
     <h2>Appointments</h2>
+    {% if appointments %}
     <ul>
-        {% for appointment in appointments %}
-        
-            <li>{{ appointment.patient_name }} - {{ appointment.treatment_name }} on {{ appointment.date }} at {{ appointment.time }}</li>
-
-        {% endfor %}
+    {% for appointment in appointments %}
+        <li>{{ appointment.patient.name }} - {{ appointment.date }} {{ appointment.time }} ({{ appointment.status }})</li>
+    {% endfor %}
     </ul>
+{% else %}
+    <p>No appointments found.</p>
+{% endif %}
 {% endblock %}

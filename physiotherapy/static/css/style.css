@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: rgb(152, 234, 210);
+    background-color: rgb(222, 248, 240);
     margin-top: 0 auto;
 
 
@@ -57,10 +57,10 @@ body {
             }
         }
     }
-}
+} 
 
 main {
-    padding-top: 10px;
+    padding-top: 20px;
     text-align: center;
     margin-top: 30px;
 }
@@ -96,6 +96,6 @@ footer {
     bottom: 0;
     width: 100%;
     background-color: rgb(31, 112, 105);
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     text-align: center;
 }
