@@ -1,96 +1,138 @@
+/* Global Reset */
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-
 }
 
+
+/* Body Styling */
 body {
     background-color: rgb(222, 248, 240);
-    margin-top: 0 auto;
+    margin: 0 auto;
+}
 
+/* Header Styling */
+header {
+    z-index: 2;
+    height: 50px;
+}
 
-    header {
-        z-index: 2;
-        height: 50px;
+header nav {
+    height: 100%;
+}
 
-        nav {
-            height: 100%;
+header nav div.container-fluid {
+    height: 100%;
+}
 
-            div.container-fluid {
-                height: 100%;
+header nav div.container-fluid a.navbar-brand {
+    color: rgb(0, 0, 0);
+}
 
-                a.navbar-brand {
-                    color: rgb(0, 0, 0);
+header nav div.container-fluid a.navbar-brand img {
+    height: 100%;
+    background-color: rgb(43, 154, 171);
+    border-radius: 50%;
+}
 
-                    img {
-                        height: 100%;
-                        background-color: rgb(43, 154, 171);
-                        border-radius: 50%;
-                    }
+header nav div.collapse ul.navbar-nav li.nav-item button.nav-link {
+    color: rgb(236, 237, 238);
+}
 
+header nav div.collapse ul.navbar-nav li.nav-item a.nav-link {
+    color: aliceblue;
+}
 
-                }
+header nav div.collapse ul.navbar-nav li.nav-item:hover {
+    background-color: gray;
+    transform: scale(1.05);
+}
 
-                div.collapse {
-
-                    ul.navbar-nav {
-                        li.nav-item {
-                            button.nav-link {
-                                color: rgb(236, 237, 238);
-                            }
-
-                            a.nav-link {
-                                color: aliceblue;
-                            }
-
-                        }
-
-                        :hover {
-                            background-color: gray;
-                            transform: scale(1.05);
-
-                        }
-                    }
-                }
-
-            }
-        }
-    }
-} 
-
+/* Main Section Styling */
 main {
     padding-top: 20px;
     text-align: center;
     margin-top: 30px;
+    margin-bottom: 70px;
 }
 
-.slide_bar {
-    #carouselExampleControls {
-        width: 1000px;
-        height: 400px;
+/* Carousel Styling */
+.slide_bar #carouselExampleControls {
+    width: 100%;
+    height: 400px;
+    margin: auto;
+}
+
+.slide_bar #carouselExampleControls .carousel-inner {
+    width: 100%;
+    height: 100%;
+}
+
+.slide_bar #carouselExampleControls .carousel-item img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+#stitle {
+    .grid_container {
         margin: auto;
-        /* Center the carousel */
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 10px;
+
+        .grid_item {
+            margin: auto;
+            width: 600px;
+            margin-top: 10px;
+            box-shadow: 1px 1px 2px;
+            display: flex;
+            justify-content: space-between;
+
+            .card_img {
+                height: 200px;
+                width: 50%;
+                overflow: hidden;
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .card_body {
+                width: 50%;
+                padding-left: 5px;
+
+                p {
+                    height: 180px;
+                    list-style-type: none;
+                    overflow-y: scroll;
+
+
+                }
+
+
+            }
+        }
     }
 
-    #carouselExampleControls .carousel-inner {
-        width: 100%;
-        height: 100%;
-    }
+    @media screen and (max-width: 480px) {
+        .grid_container {
 
-    #carouselExampleControls .carousel-item img {
-        width: 1000px;
-        /* Ensure image fills the width */
-        height: 400px;
-        /* Ensure image fills the height */
-        object-fit: fill;
-        /* Crop image to fit */
-        border-radius: 10px;
-        /* Optional: Add rounded corners */
+            grid-template-columns: auto;
+        }
     }
 }
 
 
+/* Footer Styling */
 footer {
     position: fixed;
     bottom: 0;
@@ -98,4 +140,7 @@ footer {
     background-color: rgb(31, 112, 105);
     color: rgb(255, 255, 255);
     text-align: center;
+    p {
+        height: 20px;
+    }
 }
