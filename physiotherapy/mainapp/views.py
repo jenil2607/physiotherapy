@@ -40,26 +40,3 @@ def appointment_list(request):
     }
     template = loader.get_template('appointment_list.html')
     return HttpResponse(template.render(context, request))
-
-def signin(request):
-    if request.method == "POST":
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            return HttpResponseRedirect('/')  # Redirect after login
-    else:
-        form = AuthenticationForm()
-    
-    return render(request, 'signin.html', {'form': form})
-
-def signup(request):
-    if request.method == "POST":
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/signin/')  # Redirect to signin after successful signup
-    else:
-        form = UserCreationForm()
-    
-    return render(request, 'signup.html', {'form': form})

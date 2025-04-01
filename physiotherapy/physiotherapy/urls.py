@@ -20,6 +20,8 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('mainapp.urls')),
+    path('auth/', include('authentication.urls')), # including our authentication app urls
+    path('acc/', include('django.contrib.auth.urls')) # include django's inbulit auth urls
 ]
 
 
