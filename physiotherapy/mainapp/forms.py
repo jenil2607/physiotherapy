@@ -1,5 +1,5 @@
 from django import forms
-from .models import Appointment, Patient
+from .models import Appointment, Patient, Review, TherapySession
 class AppointmentForm(forms.ModelForm):
     
     patient_name = forms.CharField(
@@ -41,3 +41,15 @@ class AppointmentForm(forms.ModelForm):
             raise ValueError("Treatment is required")
         
         return super().save(commit)
+
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['rating', 'comment']
+
+
+class TherapySessionForm(forms.ModelForm):
+    class Meta:
+        model = TherapySession
+        fields = ['title', 'description', 'date', 'time']

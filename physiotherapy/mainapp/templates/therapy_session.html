@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Therapy Sessions</h1>
+    <a href="{% url 'create_therapy_session' %}">Add New Session</a>
+    <ul>
+        {% for session in sessions %}
+            <li>{{ session.title }} - {{ session.date }} at {{ session.time }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

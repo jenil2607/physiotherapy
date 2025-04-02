@@ -55,3 +55,25 @@ class Appointment(models.Model):
         return f"{self.patient.name} - {self.date} {self.time} ({self.status})"
 
 
+
+class Review(models.Model):
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    rating = models.IntegerField()
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Review by {self.patient} - {self.rating} Stars"
+
+
+from django.db import models
+
+class TherapySession(models.Model):
+    title = models.CharField(max_length=200)  # Name of the therapy session
+    description = models.TextField()
+    date = models.DateField()
+    time = models.TimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.title} - {self.date} {self.time}"

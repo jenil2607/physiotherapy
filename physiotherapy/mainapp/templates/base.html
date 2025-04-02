@@ -43,15 +43,19 @@
                             <a class="nav-link {% if current_page == 'about' %}border disabled{% else %}active{% endif %}"
                                 href="{% url 'appointment_list' %}">Appointments</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if current_page == 'about' %}border disabled{% else %}active{% endif %}"
+                                href="{% url 'therapy_session_list' %}">View Therapy Sessions</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 Dropdown
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Therapy Session</a></li>
+                                <li><a class="dropdown-item" href="{% url 'therapy_session' %}">Book Therapy Session</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Review</a></li>
+                                <li><a class="dropdown-item" href="{% url 'review_page' %}">Review</a></li>
                             </ul>
                         </li>
                         {% if user.is_authenticated %}
