@@ -62,7 +62,7 @@ main {
     width: 100%;
     height: 400px;
     margin: auto;
-    
+
 }
 
 .slide_bar #carouselExampleControls .carousel-inner {
@@ -79,57 +79,130 @@ main {
 }
 
 
+/* Container styling */
+.ctitle {
+    padding: 20px;
+
+}
+
+/* Card styling */
+.card {
+    border: 5px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background: #fff;
+    padding: 15px;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 4px 4px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Title Styling */
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+/* Text Styling */
+.card-text {
+    font-size: 16px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Button Styling */
+.btn-primary {
+    display: block;
+    width: 300px;
+    margin: 10px auto;
+    background-color: #81d9ba;
+    border-color: #0b7856;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #0b7856;
+    transform: scale(1.05);
+}
+
+/* Section Styling */
 #stitle {
+    padding: 40px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Grid Container */
+.grid_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    align-items: start;
+}
+
+/* Individual Grid Item */
+.grid_item {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.grid_item:hover {
+    transform: scale(1.03);
+    box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Styling */
+.card_img img {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Card Body */
+.card_body {
+    padding: 15px;
+    text-align: center;
+}
+
+.card_body p {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.5;
+}
+
+/* Strong Text */
+.card_body strong {
+    display: block;
+    font-size: 18px;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 480px) {
     .grid_container {
-        margin: auto;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        display: grid;
-        grid-template-columns: auto auto;
-        gap: 10px;
 
-        .grid_item {
-            margin: auto;
-            width: 600px;
-            margin-top: 10px;
-            box-shadow: 1px 1px 2px;
-            display: flex;
-            justify-content: space-between;
-
-            .card_img {
-                height: 200px;
-                width: 50%;
-                overflow: hidden;
-
-                img {
-                    height: 100%;
-                    width: 100%;
-                    object-fit: cover;
-                }
-            }
-
-            .card_body {
-                width: 50%;
-                padding-left: 5px;
-
-                p {
-                    height: 180px;
-                    list-style-type: none;
-                    overflow-y: scroll;
-
-
-                }
-
-
-            }
-        }
-    }
-
-    @media screen and (max-width: 480px) {
-        .grid_container {
-
-            grid-template-columns: auto;
-        }
+        grid-template-columns: auto;
     }
 }
 
@@ -142,7 +215,17 @@ footer {
     background-color: rgb(31, 112, 105);
     color: rgb(255, 255, 255);
     text-align: center;
+
     p {
         height: 20px;
     }
 }
+
+
+
+
+
+/* book appintment */
+
+/* log in */
+

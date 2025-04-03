@@ -12,4 +12,68 @@ Sign in
     {{ form.as_p }}
     <button type="submit">Sign in</button>
 </form>
+
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0f7e9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* margin-bottom: 40px; */
+
+}
+
+h2 {
+    text-align: center;
+    color: #2d6a4f;
+}
+
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px;
+}
+
+form p {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    color: #2d6a4f;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid #94d3ac;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+button {
+    background-color: #2d6a4f;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #1b4332;
+}
+
+</style>
+
 {% endblock %}
+
