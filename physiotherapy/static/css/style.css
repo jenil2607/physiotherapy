@@ -87,7 +87,7 @@ main {
 
 /* Card styling */
 .card {
-    border: 5px solid #ddd;
+    border: 5px solid #cbcece;
     border-radius: 12px;
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -222,10 +222,4 @@ footer {
 }
 
 
-
-
-
-/* book appintment */
-
-/* log in */
 
