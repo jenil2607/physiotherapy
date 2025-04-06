@@ -1,10 +1,31 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Create Therapy Session</h1>
+    <h1>Book Therapy Session</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Save</button>
     </form>
+
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- Initialize Flatpickr on form fields -->
+    <script>
+        flatpickr("#id_date", {
+            enableTime: false,
+            dateFormat: "Y-m-d"
+        });
+
+        flatpickr("#id_time", {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "H:i"
+        });
+    </script>
+
 {% endblock %}

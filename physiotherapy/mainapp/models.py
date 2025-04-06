@@ -4,6 +4,7 @@ from django.db import models
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # Patient Model
 class Patient(models.Model):
     name = models.CharField(max_length=100)
@@ -44,6 +45,7 @@ class Appointment(models.Model):
         ('cancelled', 'Cancelled'),
     ]
 
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     therapist = models.ForeignKey(Therapist, on_delete=models.CASCADE)
     treatment = models.ForeignKey(Treatment, on_delete=models.CASCADE)

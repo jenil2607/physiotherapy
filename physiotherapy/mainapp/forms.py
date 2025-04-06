@@ -1,5 +1,9 @@
 from django import forms
 from .models import Appointment, Patient, Review, TherapySession
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
 class AppointmentForm(forms.ModelForm):
     
     patient_name = forms.CharField(
@@ -53,3 +57,12 @@ class TherapySessionForm(forms.ModelForm):
     class Meta:
         model = TherapySession
         fields = ['title', 'description', 'date', 'time']
+        widgets = {
+            'date': forms.TextInput(attrs={'class': 'datepicker', 'placeholder': 'Select Date'}),
+            'time': forms.TextInput(attrs={'class': 'timepicker', 'placeholder': 'Select Time'}),
+        }
+
+class UserRegisterForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']

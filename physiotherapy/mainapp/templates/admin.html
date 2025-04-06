@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<h2>Admin Dashboard</h2>
+
+<h3>Appointments</h3>
+<table border="1">
+    <tr>
+        <th>Patient</th>
+        <th>Therapist</th>
+        <th>Date</th>
+        <th>Time</th>
+    </tr>
+    {% for appt in appointments %}
+    <tr>
+        <td>{{ appt.patient }}</td>
+        <td>{{ appt.therapist }}</td>
+        <td>{{ appt.date }}</td>
+        <td>{{ appt.time }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h3>Therapy Sessions</h3>
+<table border="1">
+    <tr>
+        <th>Patient</th>
+        <th>Therapist</th>
+        <th>Date</th>
+        <th>Duration</th>
+    </tr>
+    {% for session in therapy_sessions %}
+    <tr>
+        <td>{{ session.patient }}</td>
+        <td>{{ session.therapist }}</td>
+        <td>{{ session.date }}</td>
+        <td>{{ session.duration }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

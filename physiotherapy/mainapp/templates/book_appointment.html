@@ -6,38 +6,48 @@
 {% block content %}
     <h2>Book an Appointment</h2>
     
-<form method="post">
-    {% csrf_token %}
+    <form method="post">
+        {% csrf_token %}
     
-    <div>
-        <label for="id_patient_name">Patient:</label>
-        {{ form.patient_name }}
-    </div>
+        <div>
+            <label for="id_patient_name">Patient:</label>
+            {{ form.patient_name }}
+        </div>
     
-
-    <div>
-        <label for="id_therapist">Therapist:</label>
-        {{ form.therapist }}
-    </div>
-
-    <div>
-        <label for="id_treatment">Treatment:</label>
-        {{ form.treatment }}
-    </div>
-
-    <div>
-        <label for="id_date">Date:</label>
-        <input type="text" id="date" name="date" class="datepicker" placeholder="Select Date">
-    </div>
-
-    <div>
-        <label for="id_time">Time:</label>
-        <input type="text" id="time" name="time" class="timepicker" placeholder="Select Time">
-    </div>
-
-    <br>
-    <button type="submit">Book</button>
-</form>
+        <div>
+            <label for="id_patient_age">Age:</label>
+            {{ form.patient_age }}
+        </div>
+    
+        <div>
+            <label for="id_patient_contact">Contact:</label>
+            {{ form.patient_contact }}
+        </div>
+    
+        <div>
+            <label for="id_therapist">Therapist:</label>
+            {{ form.therapist }}
+        </div>
+    
+        <div>
+            <label for="id_treatment">Treatment:</label>
+            {{ form.treatment }}
+        </div>
+    
+        <div>
+            <label for="id_date">Date:</label>
+            {{ form.date }}
+        </div>
+    
+        <div>
+            <label for="id_time">Time:</label>
+            {{ form.time }}
+        </div>
+    
+        <br>
+        <button type="submit">Book</button>
+    </form>
+    
 
 
     <!-- Include Flatpickr CSS & JS -->
@@ -61,69 +71,77 @@
 
 
 <style>
-
-    /* General Styling */
-body {
-    background-color: #def8f0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-/* Form Container */
-form {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Labels */
-label {
-    font-weight: bold;
-    display: block;
-    margin-top: 10px;
-    text-align: left;
-    width: 100%;
-}
-
-/* Input Fields */
-input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-/* Button */
-button {
-    background-color: #3d8b92;
-    color: white;
-    border: none;
-    padding: 10px;
-    width: 100%;
-    margin-top: 15px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease-in-out;
-}
-
-button:hover {
-    background-color: #0b7856;
-}
-
-</style>
+    /* Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    /* Body Styling */
+    body {
+        background-color: #def8f0;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding-top: 80px; /* Space for header */
+    }
+    
+    /* Form Container */
+    form {
+        background: white;
+        padding: 25px 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        margin: 0 auto 30px auto;
+        text-align: center;
+    }
+    
+    /* Headings */
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    /* Labels */
+    label {
+        font-weight: bold;
+        display: block;
+        margin-top: 12px;
+        text-align: left;
+    }
+    
+    /* Input Fields */
+    input,
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 6px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 15px;
+        background: #f9f9f9;
+    }
+    
+    /* Button */
+    button {
+        background-color: #3d8b92;
+        color: white;
+        border: none;
+        padding: 12px;
+        width: 100%;
+        margin-top: 20px;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    
+    button:hover {
+        background-color: #0b7856;
+    }
+    </style>
+    
 
 {% endblock %}
 

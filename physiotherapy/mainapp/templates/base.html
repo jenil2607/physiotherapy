@@ -53,9 +53,10 @@
                                 Dropdown
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{% url 'therapy_session' %}">Book Therapy Session</a></li>
+                                <li><a class="dropdown-item" href="{% url 'create_therapy_session' %}">Book Therapy Session</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="{% url 'review_page' %}">Review</a></li>
+                                <li><a class="dropdown-item" href="{% url 'admin_dashboard' %}">admin_dashboard</a></li>
                             </ul>
                         </li>
                         {% if user.is_authenticated %}
