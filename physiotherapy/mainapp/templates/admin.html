@@ -40,4 +40,48 @@
     </tr>
     {% endfor %}
 </table>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #e8fefb;
+        color: #e23d3d;
+        margin: 20px;
+    }
+
+    h2, h3 {
+        text-align: center;
+        color: #2c3e50;
+    }
+
+    table {
+        margin: 20px auto;
+        border-collapse: collapse;
+        width: 80%;
+        box-shadow: 0 4px 8px rgb(128, 206, 205);
+        background-color: #fff;
+    }
+
+    th, td {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    th {
+        background-color: #348182;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #e0f7fa;
+    }
+</style>
+
+
 {% endblock %}

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Appointment, Patient, Review, TherapySession
+from .models import Appointment, Patient, TherapySession
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -46,11 +46,6 @@ class AppointmentForm(forms.ModelForm):
         
         return super().save(commit)
 
-
-class ReviewForm(forms.ModelForm):
-    class Meta:
-        model = Review
-        fields = ['rating', 'comment']
 
 
 class TherapySessionForm(forms.ModelForm):

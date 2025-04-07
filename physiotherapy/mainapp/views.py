@@ -3,13 +3,13 @@ from django.template import loader
 
 # Create your views here.
 from django.shortcuts import render, redirect
-from .models import Appointment, Review, TherapySession
-from .forms import AppointmentForm, ReviewForm, TherapySessionForm
+from .models import Appointment, TherapySession
+from .forms import AppointmentForm, TherapySessionForm
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
-
+from django.views.generic import CreateView
 # admin login
 
 from django.contrib.admin.views.decorators import staff_member_required
@@ -58,35 +58,6 @@ def appointment_list(request):
     return HttpResponse(template.render(context, request))
 
 
-@login_required
-def review_page(request):
-    reviews = Review.objects.all()
-    print(f"Retrieved {reviews.count()} reviews:", [str(review) for review in reviews])  # Debug output
-
-    context = {
-        'reviews': reviews,
-        'current_page': 'reviews',
-    }
-
-    template = loader.get_template('review.html')  # Load the template
-    return HttpResponse(template.render(context, request))  # Render and return response
-
-def therapy_session_list(request):
-    sessions = TherapySession.objects.all()
-    return render(request, 'therapy_session.html', {'sessions': sessions})
-
-def create_therapy_session(request):
-    if request.method == "POST":
-        form = TherapySessionForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('therapy_session_list')
-    else:
-        form = TherapySessionForm()
-    
-    return render(request, 'create_therapy_session.html', {'form': form})
-
-
 @method_decorator(staff_member_required, name='dispatch')
 class Admin_Dashboard(TemplateView):
     template_name = 'admin.html'
@@ -96,3 +67,22 @@ class Admin_Dashboard(TemplateView):
         context['appointments'] = Appointment.objects.all()
         context['therapy_sessions'] = TherapySession.objects.all()
         return context
+
+
+@login_required
+def create_therapy_session(request):
+    if request.method == "POST":
+        form = TherapySessionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('therapy_session_list')
+    else:
+        form = TherapySessionForm()
+    return render(request, 'create_therapy_session.html', {'form': form})
+
+
+
+@login_required
+def therapy_session_list(request):
+    sessions = TherapySession.objects.all()
+    return render(request, 'therapy_session_list.html', {'sessions': sessions})

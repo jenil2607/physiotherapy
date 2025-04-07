@@ -36,16 +36,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link {% if current_page == 'about' %}border disabled{% else %}active{% endif %}"
+                            <a class="nav-link {% if current_page == 'book_appointment' %}border disabled{% else %}active{% endif %}"
                                 href="{% url 'book_appointment' %}">Book Appointment</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if current_page == 'about' %}border disabled{% else %}active{% endif %}"
+                            <a class="nav-link {% if current_page == 'Appointments' %}border disabled{% else %}active{% endif %}"
                                 href="{% url 'appointment_list' %}">Appointments</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% if current_page == 'about' %}border disabled{% else %}active{% endif %}"
-                                href="{% url 'therapy_session_list' %}">View Therapy Sessions</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -55,14 +51,13 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{% url 'create_therapy_session' %}">Book Therapy Session</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="{% url 'review_page' %}">Review</a></li>
-                                <li><a class="dropdown-item" href="{% url 'admin_dashboard' %}">admin_dashboard</a></li>
+                                <li><a class="dropdown-item" href="{% url 'therapy_session_list' %}">View Therapy Session</a></li>
                             </ul>
                         </li>
                         {% if user.is_authenticated %}
                         {% if user.is_staff %}
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#"></a>
+                            <a class="nav-link" aria-current="page" href="{% url 'admin_dashboard' %}">admin_dashboard</a>
                         </li>
                         {% else %}
                         <li class="nav-item">

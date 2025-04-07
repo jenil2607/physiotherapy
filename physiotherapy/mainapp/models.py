@@ -3,6 +3,9 @@ from django.db import models
 # Create your models here.
 from django.db import models
 from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from datetime import timedelta
 
 
 # Patient Model
@@ -56,25 +59,14 @@ class Appointment(models.Model):
     def __str__(self):
         return f"{self.patient.name} - {self.date} {self.time} ({self.status})"
 
-
-
-class Review(models.Model):
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-    rating = models.IntegerField()
-    comment = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"Review by {self.patient} - {self.rating} Stars"
-
-
-from django.db import models
-
 class TherapySession(models.Model):
-    title = models.CharField(max_length=200)  # Name of the therapy session
+    title = models.CharField(max_length=200)
     description = models.TextField()
+    patient = models.ForeignKey('Patient', on_delete=models.CASCADE, null=True)
+    therapist = models.ForeignKey('Therapist', on_delete=models.CASCADE, null=True)
     date = models.DateField()
     time = models.TimeField()
+    duration = models.DurationField(default=timedelta(minutes=30))  # Example default
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>Book Therapy Session</h1>
-    <form method="post">
+    <form method="post" class="book_therapy_session">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Save</button>
@@ -27,5 +27,62 @@
             dateFormat: "H:i"
         });
     </script>
+
+<style>
+.book_therapy_session {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.book_therapy_session label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+.book_therapy_session input[type="text"],
+.book_therapy_session input[type="date"],
+.book_therapy_session input[type="time"],
+.book_therapy_session input[type="email"],
+.book_therapy_session select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.book_therapy_session button[type="submit"] {
+    margin-top: 20px;
+    width: 100%;
+    background-color: rgb(31, 112, 105);
+    color: white;
+    font-size: 16px;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.book_therapy_session button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 40px;
+}
+
+
+</style>
 
 {% endblock %}
