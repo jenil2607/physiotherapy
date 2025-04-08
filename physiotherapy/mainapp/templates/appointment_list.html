@@ -1,16 +1,95 @@
 {% extends 'base.html' %}
 
 {% block title %}Appointments{% endblock %}
-
 {% block content %}
+<div class="appointments-wrapper">
     <h2>Appointments</h2>
     {% if appointments %}
-    <ul>
-    {% for appointment in appointments %}
-        <li>{{ appointment.patient.name }} - {{ appointment.date }} {{ appointment.time }} ({{ appointment.status }})</li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No appointments found.</p>
-{% endif %}
+        <div class="appointments-list">
+            {% for appointment in appointments %}
+                <div class="appointment-card">
+                    <p><strong>Patient:</strong> {{ appointment.patient.name }}</p>
+                    <p><strong>Date:</strong> {{ appointment.date }}</p>
+                    <p><strong>Time:</strong> {{ appointment.time }}</p>
+                    <p><strong>Status:</strong> <span class="status {{ appointment.status|lower }}">{{ appointment.status }}</span></p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-appointments">No appointments found.</p>
+    {% endif %}
+</div>
+
+<style>
+.appointments-wrapper {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #345556;
+    margin-bottom: 30px;
+}
+
+.appointments-list {
+    display: grid;
+    gap: 20px;
+}
+
+.appointment-card {
+    background-color: #ffffff;
+    border: 1px solid gray;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.appointment-card:hover {
+    transform: scale(1.02);
+}
+
+.appointment-card p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.status {
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 5px;
+}
+
+.status.pending {
+    background-color: #fdf6b2;
+    color: #856404;
+}
+
+.status.completed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status.confirmed {
+    background-color: #8fd2f1;
+    color: #265b8d;
+}
+
+.status.cancelled {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.no-appointments {
+    text-align: center;
+    color: #888;
+    margin-top: 40px;
+}
+
+
+</style>
+
 {% endblock %}

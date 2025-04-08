@@ -1,11 +1,78 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="sessions-wrapper">
     <h1>Therapy Sessions</h1>
-    <!-- <a href="{% url 'create_therapy_session' %}">Add New Session</a> -->
-    <ul>
-        {% for session in sessions %}
-            <li>{{ session.title }} - {{ session.date }} at {{ session.time }}</li>
-        {% endfor %}
-    </ul>
+
+    {% if sessions %}
+        <div class="sessions-list">
+            {% for session in sessions %}
+                <div class="session-card">
+                    <h3>{{ session.title }}</h3>
+                    <p><strong>Date:</strong> {{ session.date }}</p>
+                    <p><strong>Time:</strong> {{ session.time }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-sessions">No therapy sessions available.</p>
+    {% endif %}
+</div>
+
+
+
+<style>
+.sessions-wrapper {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+.sessions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.session-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid gray;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.session-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.session-card h3 {
+    margin-top: 0;
+    color: #4e8590;
+    font-size: 20px;
+}
+
+.session-card p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.no-sessions {
+    text-align: center;
+    color: #888;
+    margin-top: 40px;
+}
+
+
+</style>
+
 {% endblock %}
