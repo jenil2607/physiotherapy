@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.shortcuts import render, redirect
-
+from django.contrib import messages
 from django.urls import reverse_lazy
 
 from django.views.generic import CreateView
@@ -49,3 +49,18 @@ class UserRegister(CreateView):
     template_name = 'register.html'
     success_url = reverse_lazy('signin')
 
+def forgot_password_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        new_password = request.POST.get('new_password')
+
+        try:
+            user = User.objects.get(username=username)
+            user.set_password(new_password)
+            user.save()
+            messages.success(request, 'Password reset successful. You can now log in.')
+            return redirect('signin')  # or wherever your login page is
+        except User.DoesNotExist:
+            messages.error(request, 'Username not found.')
+
+    return render(request, 'authentication/forgot_password.html')
