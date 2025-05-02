@@ -1,4 +1,4 @@
-from django.shortcuts import render
+
 
 # Create your views here.
 from django.shortcuts import render, redirect
@@ -12,6 +12,11 @@ from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth.views import LoginView
 from authentication.forms import CustomUserRegisterForm
+
+from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth import views as auth_views
+
+import logging
 
 
 # Create your views here.
@@ -49,18 +54,24 @@ class UserRegister(CreateView):
     template_name = 'register.html'
     success_url = reverse_lazy('signin')
 
-def forgot_password_view(request):
+
+
+# Create logger instance
+logger = logging.getLogger(__name__)
+
+def password_reset_view(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        new_password = request.POST.get('new_password')
+        form = PasswordResetForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            
+            # Log the email being used for the reset
+            logger.debug(f"Sending password reset email to: {email}")
+            
+            # Save and send the password reset email
+            form.save(request=request)
+            return render(request, 'password_reset_done.html')
+    else:
+        form = PasswordResetForm()
 
-        try:
-            user = User.objects.get(username=username)
-            user.set_password(new_password)
-            user.save()
-            messages.success(request, 'Password reset successful. You can now log in.')
-            return redirect('signin')  # or wherever your login page is
-        except User.DoesNotExist:
-            messages.error(request, 'Username not found.')
-
-    return render(request, 'authentication/forgot_password.html')
+    return render(request, 'password_reset_form.html', {'form': form})
